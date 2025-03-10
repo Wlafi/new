@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Другие люди</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Другие пользователи</h2>
+    <ul id="usersList"></ul>
+    <button onclick="goBack()">Назад</button>
+
+    <script>
+        async function fetchUsers() {
+            try {
+                const response = await fetch('https://new-3rkw.onrender.com/users');
+                const data = await response.json();
+
+                if (response.ok) {
+                    const usersList = document.getElementById('usersList');
+                    usersList.innerHTML = data.users.map(user => `<li>${user.username} (${user.email})</li>`).join('');
+                } else {
+                    alert("Ошибка при загрузке пользователей");
+                }
+            } catch (error) {
+                console.error("Ошибка:", error);
+            }
+        }
+
+        function goBack() {
+            window.location.href = "main.html";
+        }
+
+        fetchUsers();
+    </script>
+
+</body>
+</html>

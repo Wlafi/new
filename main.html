@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        .sidebar {
+            width: 250px;
+            background: #333;
+            color: white;
+            padding: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+        }
+        .sidebar a:hover {
+            background: #575757;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Меню</h2>
+        <a href="#">Главная</a>
+        <a href="#">Профиль</a>
+        <a href="chat.html">Сообщения</a>
+        <a href="users.html">Другие люди</a>
+        <a href="#">Настройки</a>
+        <a href="#" onclick="logout()">Выйти</a>
+    </div>
+    <div class="content">
+        <h1>Добро пожаловать!</h1>
+        <p>Здесь будет контент.</p>
+    </div>
+    <script>
+        function logout() {
+            alert("Вы вышли из системы");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
